@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "consumer": "node ./consumer.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "mongoose": "^5.11.8"
+    "kafkajs": "^1.15.0",
+    "mongoose": "^5.11.8",
+    "nodemailer": "^6.4.17"
   }
 }

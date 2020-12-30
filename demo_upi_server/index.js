@@ -5,6 +5,8 @@ const cors=require('cors')
 const app=express()
 
 const UpiUserSchema=require('./models/UpiModel')
+const TransUser=require('./models/Transaction')
+const sendMessage=require('./producer')
 
 app.use(express.json())
 app.use(cors())
@@ -46,7 +48,7 @@ app.post('/login',async(req,res)=>{
         if(user){
             if(user.password===password){
                 req.session.user = user;
-                console.log(req.session.user)
+                //console.log(req.session.user)
                 res.send('user present')
             }
             else{
@@ -79,11 +81,11 @@ app.post('/checkBalance',async(req,res)=>{
 })
 app.post('/transaction',async(req,res)=>{
     const rnumber=req.body.rnumber
-    console.log(rnumber)
+    //console.log(rnumber)
     try{
         const ruser=await UpiUserSchema.findOne({mobileNumber:rnumber})
         if(ruser){
-            console.log(ruser.name)
+            //console.log(ruser.name)
             res.send(ruser.name)
         }
         else{
@@ -105,6 +107,9 @@ app.post('/pay',async(req,res)=>{
         sender.balance=parseInt(sender.balance)-parseInt(balance)
         await receiver.save()
         await sender.save()
+        let result=new TransUser({receiver:receiver,sender:sender,amount:balance,date:Date.now()})
+        await result.save()
+        sendMessage(receiver,sender,balance,Date.now())
         res.send("done")
     }catch(err){
         res.send(err)
