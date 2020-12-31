@@ -29,7 +29,36 @@ app.use(
     })
   );
 
-app.post('/Register',async(req,res)=>{
+  var checking=(req,res,next)=>{
+    if(req.session.user){
+        next()
+    }
+    else{
+        res.redirect("/login")
+    }
+}
+var loginChecking=(req,res,next)=>{
+    if(req.session.user){
+        res.redirect("/menu")
+    }
+    else{
+        next()
+    }
+}
+var cacheControl=(req,res,next)=>{
+    res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    next()
+}
+
+app.get("/login",loginChecking,cacheControl,(req,res)=>{
+    res.send("Login")
+})
+
+app.get("/menu",checking,cacheControl,(req,res)=>{
+    res.send("Menu Page")
+})
+
+app.post('/Register',cacheControl,async(req,res)=>{
     const name=req.body.name
     const email=req.body.email
     const city=req.body.city
@@ -40,7 +69,7 @@ app.post('/Register',async(req,res)=>{
     res.send('data Inserted')
 })
 
-app.post('/login',async(req,res)=>{
+app.post('/login',cacheControl,async(req,res)=>{
     const username=req.body.mobileNumber
     const password=req.body.password
     try{
@@ -110,10 +139,14 @@ app.post('/pay',async(req,res)=>{
         let result=new TransUser({receiver:receiver,sender:sender,amount:balance,date:Date.now()})
         await result.save()
         sendMessage(receiver,sender,balance,Date.now())
-        res.send("done")
+        res.send(sender.balance.toString())
     }catch(err){
         res.send(err)
     }
+})
+
+app.all("/logout",checking,(req,res)=>{
+    req.session.destroy()
 })
 
 app.listen(3001,()=>{

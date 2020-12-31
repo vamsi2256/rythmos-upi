@@ -1,6 +1,6 @@
 function SucessComponent(props){
     return(
-        <div><h1>Sucess</h1>
+        <div><h1>Success</h1>
         </div>
         
     )

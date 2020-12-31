@@ -36,6 +36,9 @@ class Service{
     payTransaction(obj){
         return axios.post(BASE_URL+'/pay',{obj})
     }
+    logout(){
+        return axios.all(BASE_URL+'/logout')
+    }
 
     // deleteById(id) {
     //     console.log(id)

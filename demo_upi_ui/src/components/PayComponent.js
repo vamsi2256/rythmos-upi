@@ -4,6 +4,7 @@ import AmountComponent from './AmountComponent'
 import ReactDOM from 'react-dom'
 function PayComponent(props){
     const [mobile,setMobile]=useState('')
+    let handleChange = props.handleChange
     useEffect(()=>{
 
     })
@@ -22,7 +23,7 @@ function PayComponent(props){
                         //     sender:senderNumber,
                         // }
                         ReactDOM.render(
-                            <AmountComponent name={name} rnumber={rnumber} sender={senderNumber}/>,document.getElementById('pay')
+                            <AmountComponent name={name} rnumber={rnumber} sender={senderNumber} handleChange={handleChange}/>,document.getElementById('pay')
                         )
                         
                     })

@@ -1,9 +1,16 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import Service from '../service/UpiServices'
+import store from 'store'
 function LoginComponent(props){
     const [user,setUser]=useState({
         Mobile:'',
         Password:''
+    })
+    useEffect(()=>{
+        let loggedIn = store.get('loggedIn')
+        if(loggedIn==true){
+            props.history.push('/menu')
+        }
     })
     function onChangeUser(e){
         setUser({...user, [e.target.name]: e.target.value})
@@ -24,6 +31,7 @@ function LoginComponent(props){
                     Service.checkLogin(record).then(res=>{
                         if(res.data==='user present'){
                             localStorage.setItem("mobile",JSON.stringify(user.Mobile))
+                            store.set('loggedIn',true)
                             props.history.push("/menu")
                         }
                         else if(res.data==='no user'){
