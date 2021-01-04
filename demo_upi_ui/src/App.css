@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  margin: 10px;
+  background-color:ivory;
 }
 
 .App-logo {
@@ -35,4 +37,61 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+ul{
+  list-style-type: none;
+}
+
+.show-balance{
+  background-image: linear-gradient(yellow 20%,green 50%);
+  color: red;
+  float: left;
+  width: 75%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.pay-comp{
+  padding: 10px;
+  width: 20%;
+  float: left;
+}
+.list-transactions{
+  width: 80%;
+  margin: auto;
+}
+
+.transaction{
+  width: 100%;
+  line-height: 1.5;
+  color: #000;
+  box-sizing: inherit;
+  position: relative;
+  
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.balance{
+  color: whitesmoke;
+  font-style: italic;
+}
+
+.name{
+  color: brown;
+}
+
+.credit{
+  background-color: hsl(120, 77%, 68%);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+}
+
+.debit{
+  border-radius: 10px;
+  background-color: hsl(0, 60%, 50%);
+  box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 }

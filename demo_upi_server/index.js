@@ -145,6 +145,13 @@ app.post('/pay',async(req,res)=>{
     }
 })
 
+app.post("/getTransactions",async(req,res)=>{
+    let transaction = await TransUser.find({"$or":[{"receiver.mobileNumber":parseInt(req.body.mobile)},
+    {"sender.mobileNumber":parseInt(req.body.mobile)}]})
+    transactions = Object.values(transaction)
+    res.send(transactions)
+})
+
 app.all("/logout",checking,(req,res)=>{
     req.session.destroy()
 })

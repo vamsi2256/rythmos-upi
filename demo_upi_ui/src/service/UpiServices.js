@@ -39,6 +39,9 @@ class Service{
     logout(){
         return axios.all(BASE_URL+'/logout')
     }
+    getTransactions(mobile){
+        return axios.post(BASE_URL+'/getTransactions',{mobile})
+    }
 
     // deleteById(id) {
     //     console.log(id)

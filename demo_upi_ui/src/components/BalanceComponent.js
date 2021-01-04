@@ -1,9 +1,9 @@
 function BalanceComponent(props){
     
     return(
-        <div>
-            <h3>{props.name}</h3>
-            <h4>Balance:{props.balance}</h4>
+        <div className="show-balance">
+            <strong><p className="name">{props.name}</p></strong>
+            <p className="balance">Balance: {props.balance}</p>
         </div>
     )
 }

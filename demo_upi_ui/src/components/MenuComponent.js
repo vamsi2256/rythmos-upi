@@ -3,6 +3,7 @@ import BalanceComponent from './BalanceComponent'
 import PayComponent from './PayComponent'
 import service from '../service/UpiServices'
 import store from 'store'
+import TransactionList from './TransactionList'
 function MenuComponent1(props){
    const [name,setName]=useState('')
     const [balance,setBalance]=useState(0)
@@ -35,6 +36,7 @@ function MenuComponent1(props){
       <div>
          <BalanceComponent name={name} balance={balance}/>
          <PayComponent handleChange={handleChange}/>
+         <TransactionList/>
          <div><button onClick={logoutHandle}>Logout</button></div>
       </div>
    )

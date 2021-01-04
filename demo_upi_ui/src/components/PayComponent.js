@@ -9,7 +9,7 @@ function PayComponent(props){
 
     })
     return(
-        <div id="pay">
+        <div id="pay" className="pay-comp">
             <input type="number" name="mobile" placeholder="enter the receiver Number" value={mobile} onChange={(e)=>setMobile(e.target.value)}/>
             <button onClick={()=>{
                     let rnumber=mobile
