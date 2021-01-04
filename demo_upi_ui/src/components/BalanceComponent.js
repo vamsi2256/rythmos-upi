@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {useState,useEffect} from 'react'
 import service from '../service/UpiServices'
 function BalanceComponent(){
@@ -13,10 +12,6 @@ function BalanceComponent(){
             setBalance(obj.balance)
         })
     })
-=======
-function BalanceComponent(props){
-    
->>>>>>> bfee21ee51adbfc7a909e512f448f0990c17665d
     return(
         <div>
             <h3>{props.name}</h3>
