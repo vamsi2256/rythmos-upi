@@ -36,8 +36,8 @@ function MenuComponent1(props){
       <div>
          <BalanceComponent name={name} balance={balance}/>
          <PayComponent handleChange={handleChange}/>
+         <div><button className="logout-btn" onClick={logoutHandle}>Logout</button></div>
          <TransactionList/>
-         <div><button onClick={logoutHandle}>Logout</button></div>
       </div>
    )
 }

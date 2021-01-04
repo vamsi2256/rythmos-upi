@@ -7,17 +7,22 @@ function PayComponent(props){
     let handleChange = props.handleChange
     return(
         <div id="pay" className="pay-comp">
-             <h4>{props.msg}</h4>
+             <p>Send to Contact</p>
             <input type="number" name="mobile" placeholder="enter the receiver Number" value={mobile} onChange={(e)=>setMobile(e.target.value)}/>
-            <button class="button" onClick={()=>{
+            <button onClick={()=>{
                     let rnumber=mobile
                     let senderNumber=JSON.parse(localStorage.getItem("mobile"))
                     let data={rnumber:rnumber,sender:senderNumber}
                     Service.checkTransaction(data).then(res=>{
                         let name=res.data
+                        if(name!=="no user"){
                         ReactDOM.render(
                             <AmountComponent name={name} rnumber={rnumber} sender={senderNumber} handleChange={handleChange}/>,document.getElementById('pay')
-                        )
+                        )}
+                        else{
+                            alert('There is no user with the given mobile number')
+                            window.location.reload()
+                        }
                         
                     })
 

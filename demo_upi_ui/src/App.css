@@ -95,3 +95,12 @@ ul{
   background-color: hsl(0, 60%, 50%);
   box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 }
+
+.logout-btn{
+  position: relative;
+  margin-left: 85%;
+  padding: 10px;
+  color:white;
+  background-color: blue;
+  border-radius: 5px;
+}
