@@ -16,16 +16,18 @@ function LoginComponent(props){
         setUser({...user, [e.target.name]: e.target.value})
     }
     return(
-        <div>
+            <body>
+            <div>
+            
+            <form class="box">
             <h1>Login  Form</h1>
-            <form >
                 <input type="text" name="Mobile" placeholder="enter the mobile number"
                  value={user.Mobile} onChange={onChangeUser} />
                 <br></br>
                 <input type="password" name="Password" placeholder="enter the password"
                 value={user.Password} onChange={onChangeUser} />
                 <br/>
-                <button  onClick={(e)=>{
+                <button class="button" onClick={(e)=>{
                     e.preventDefault()
                     let record={mobile:user.Mobile,password:user.Password}
                     Service.checkLogin(record).then(res=>{
@@ -42,11 +44,14 @@ function LoginComponent(props){
                         }
                     }).catch(err=>props.history.push('/'))
                 }}>Login</button>
-            </form>
-            <button onClick={()=>{
+                <br/><br/>
+                <button class="button" onClick={()=>{
                 props.history.push('/Register')
             }}>create an account.</button>
+            </form>
         </div>
+            </body>
+            
     )
 }
 export default LoginComponent

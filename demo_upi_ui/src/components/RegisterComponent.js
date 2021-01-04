@@ -20,20 +20,21 @@ function RegisterComponent(props){
     }
     return(
         <div>
-             <form>
+            <body>
+            <form class="box">
                 <div className="form-group">
                     <label> Name: </label>
-                    <input placeholder="Name" name="Name" className="form-control"
+                    <input type="text" placeholder="Name" name="Name" className="form-control"
                     value={user.Name} onChange={onChangeUser}/>
                 </div>
                 <div className="form-group">
                     <label> Email: </label>
-                    <input placeholder="Email" name="Email" className="form-control"
+                    <input type="text" placeholder="Email" name="Email" className="form-control"
                     value={user.Email} onChange={onChangeUser}/>
                 </div>
                 <div className="form-group">
                     <label> Mobile: </label>
-                    <input type="number" name="Mobile" className="form-control"
+                    <input type="number" name="Mobile" className="form-control" placeholder="Mobile"
                     value={user.Mobile} onChange={onChangeUser}/>
                 </div>
                 <div className="form-group">
@@ -46,13 +47,14 @@ function RegisterComponent(props){
                     <input type="password" placeholder="Password" name="Password" className="form-control"
                      value={user.Password} onChange={onChangeUser}/>
                 </div>
-                <button className="btn btn-success" onClick={(e)=>{
+                <button class="button"  onClick={(e)=>{
                     e.preventDefault();
                     let record={name:user.Name,email:user.Email,mobile:user.Mobile,city:user.City,password:user.Password}
                    Service.save(record).then(res=>props.history.push('/')).catch(err=>props.history.push('/Register'))
                 }}>Register</button>
-                <button className="btn btn-danger" onClick={()=> props.history.push('/')} style={{marginLeft:"10px"}}>Cancel</button>
+                <button class="button1" onClick={()=> props.history.push('/')} style={{marginLeft:"10px"}}>Cancel</button>
             </form>
+            </body>
         </div>
     )
 }

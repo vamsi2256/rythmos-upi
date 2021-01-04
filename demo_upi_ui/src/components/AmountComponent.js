@@ -16,7 +16,7 @@ function AmountComponent(props){
         <div id="amount">
             <h4>paying to {props.name}</h4>
             <input type="number" name="Amount" placeholder="enter the Amount" value={Amount} onChange={(e)=>setAmount(e.target.value)}/>
-            <button onClick={()=>{
+            <button class="button" onClick={()=>{
                 let dummy={
                     name:props.name,
                     rnumber:props.rnumber,

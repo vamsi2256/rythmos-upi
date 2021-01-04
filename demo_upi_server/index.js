@@ -77,7 +77,6 @@ app.post('/login',cacheControl,async(req,res)=>{
         if(user){
             if(user.password===password){
                 req.session.user = user;
-                //console.log(req.session.user)
                 res.send('user present')
             }
             else{
