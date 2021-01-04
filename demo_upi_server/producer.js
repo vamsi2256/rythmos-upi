@@ -25,7 +25,6 @@ module.exports=async function sendMessage(receiver,sender,amount,date){
               { key: 'transaction-alert', value:JSON.stringify(obj)}
             ]
           }
-          console.log('payloads=', payloads)
           producer.send(payloads)
     }
     catch(err){

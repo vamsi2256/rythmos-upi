@@ -1,5 +1,6 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import Service from '../service/UpiServices'
+import store from 'store'
 function RegisterComponent(props){
     const [user,setUser]=useState({
         Name:'',
@@ -7,6 +8,12 @@ function RegisterComponent(props){
         Mobile:'',
         City:'',
         Password:''
+    })
+    useEffect(()=>{
+        let loggedIn = store.get('loggedIn')
+        if(loggedIn){
+            props.history.push('/menu')
+        }
     })
     function onChangeUser(e){
         setUser({...user, [e.target.name]: e.target.value})
