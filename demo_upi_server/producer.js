@@ -11,7 +11,6 @@ const topic = config.kafka.TOPIC
 const producer = client.producer()
 
 module.exports=async function sendMessage(receiver,sender,amount,date){
-    
     try{
         await producer.connect()
         let obj={

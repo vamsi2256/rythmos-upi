@@ -6,10 +6,10 @@ function MenuComponent1(props){
 
    })
    return(
-      <div>
+      <body class="box">
          <BalanceComponent/>
-         <PayComponent/>
-      </div>
+         <PayComponent msg=""/>
+      </body>
    )
 }
 export default MenuComponent1

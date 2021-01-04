@@ -4,9 +4,6 @@ function BalanceComponent(){
     const [name,setName]=useState('')
     const [balance,setBalance]=useState(0)
     useEffect(()=>{
-
-    })
-    useEffect(()=>{
         let mobile=JSON.parse(localStorage.getItem("mobile"))
         console.log(mobile)
         service.checkBalance(mobile).then(res=>{
