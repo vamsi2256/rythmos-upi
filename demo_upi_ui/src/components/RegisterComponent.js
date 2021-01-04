@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import Service from '../service/UpiServices'
 import store from 'store'
+import './main.css'
 function RegisterComponent(props){
     const [user,setUser]=useState({
         Name:'',
@@ -10,6 +11,7 @@ function RegisterComponent(props){
         Password:''
     })
     useEffect(()=>{
+        document.body.style.backgroundColor = "#00CCFF"
         let loggedIn = store.get('loggedIn')
         if(loggedIn){
             props.history.push('/menu')

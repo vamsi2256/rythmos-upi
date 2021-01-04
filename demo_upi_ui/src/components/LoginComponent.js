@@ -1,24 +1,24 @@
 import {useEffect, useState} from 'react'
 import Service from '../service/UpiServices'
 import store from 'store'
+import './main.css'
 function LoginComponent(props){
     const [user,setUser]=useState({
         Mobile:'',
         Password:''
     })
     useEffect(()=>{
+        document.body.style.backgroundColor = "#00CCFF"
         let loggedIn = store.get('loggedIn')
-        if(loggedIn==true){
+        if(loggedIn===true){
             props.history.push('/menu')
         }
-    })
+    },[])
     function onChangeUser(e){
         setUser({...user, [e.target.name]: e.target.value})
     }
     return(
-            <body>
-            <div>
-            
+            <body class="start">
             <form class="box">
             <h1>Login  Form</h1>
                 <input type="text" name="Mobile" placeholder="enter the mobile number"
@@ -49,8 +49,7 @@ function LoginComponent(props){
                 props.history.push('/Register')
             }}>create an account.</button>
             </form>
-        </div>
-            </body>
+    </body>
             
     )
 }

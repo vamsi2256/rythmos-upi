@@ -4,6 +4,7 @@ import PayComponent from './PayComponent'
 import service from '../service/UpiServices'
 import store from 'store'
 import TransactionList from './TransactionList'
+import './main.css'
 function MenuComponent1(props){
    const [name,setName]=useState('')
     const [balance,setBalance]=useState(0)
@@ -33,9 +34,9 @@ function MenuComponent1(props){
       props.history.push('/')
    }
    return(
-      <div>
+      <div class="start">
          <BalanceComponent name={name} balance={balance}/>
-         <PayComponent handleChange={handleChange}/>
+         <PayComponent handleChange={handleChange} msg=""/>
          <div><button className="logout-btn" onClick={logoutHandle}>Logout</button></div>
          <TransactionList/>
       </div>

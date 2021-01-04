@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Service from '../service/UpiServices'
 import ReactDom from 'react-dom'
 import SucessComponent from './SucessComponent'
+import FailureComponent from './FailureComponent'
 
 function AmountComponent(props){
     const [Amount,setAmount]=useState(0)
@@ -23,13 +24,22 @@ function AmountComponent(props){
                     sender:props.sender,
                 }
                 dummy.amount=Amount
-                Service.payTransaction(dummy).then(res=>{
-                    handleChange(res.data)
+                if(props.balance>Amount){
+                    Service.payTransaction(dummy).then(res=>{
+                        handleChange(res.data)
+                        ReactDom.render(
+                            <SucessComponent/>,document.getElementById('amount')
+                        )
+                        setTimeout(refershPage,1500)
+                    })
+                }
+                else{
                     ReactDom.render(
-                        <SucessComponent/>,document.getElementById('amount')
+                        <FailureComponent/>,document.getElementById('amount')
                     )
-                    setTimeout(refershPage,4000)
-                })
+                    setTimeout(refershPage,1500)
+                }
+                
             }}>Send</button>
         </div>
     )
