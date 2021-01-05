@@ -114,10 +114,10 @@ app.post('/transaction',async(req,res)=>{
         const ruser=await UpiUserSchema.findOne({mobileNumber:rnumber})
         if(ruser){
             //console.log(ruser.name)
-            res.send(ruser.name)
+            res.send({name:ruser.name,balance:ruser.balance})
         }
         else{
-            res.send('no user')
+            res.send({name:'no user'})
         }
     }
     catch(err){
@@ -148,6 +148,7 @@ app.post("/getTransactions",async(req,res)=>{
     let transaction = await TransUser.find({"$or":[{"receiver.mobileNumber":parseInt(req.body.mobile)},
     {"sender.mobileNumber":parseInt(req.body.mobile)}]})
     transactions = Object.values(transaction)
+    transactions.reverse()
     res.send(transactions)
 })
 

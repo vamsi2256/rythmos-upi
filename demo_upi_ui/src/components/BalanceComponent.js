@@ -14,8 +14,8 @@ function BalanceComponent(props){
     })
     return(
         <div className="show-balance">
-            <strong><p className="name">{props.name}</p></strong>
-            <p className="balance">Balance: {props.balance}</p>
+            <strong><p className="name">{name}</p></strong>
+            <p className="balance">Balance: {balance}</p>
         </div>
     )
 }

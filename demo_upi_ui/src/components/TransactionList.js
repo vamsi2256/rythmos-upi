@@ -6,17 +6,8 @@ function TransactionList(){
     useEffect(()=>{
         let mobile = JSON.parse(localStorage.getItem("mobile"))
         Service.getTransactions(mobile).then((res)=>{
-            // console.log(res.data)
             let tram = res.data
-            // console.log(Array.isArray(tram))
-            // if(transactions.length===0){
-            //     tram.map((label)=>{
-            //         setTransactions([...transactions,label])
-            //     })
-            // }
             setTransactions(tram)
-            // console.log(Array.isArray(transactions))
-            // console.log(transactions)
         })
     },[])
 
