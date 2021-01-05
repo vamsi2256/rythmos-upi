@@ -18,8 +18,8 @@ function LoginComponent(props){
         setUser({...user, [e.target.name]: e.target.value})
     }
     return(
-            <body class="start">
-            <form class="box">
+            <div className="start">
+            <form className="box">
             <h1>Login  Form</h1>
                 <input type="text" name="Mobile" placeholder="enter the mobile number"
                  value={user.Mobile} onChange={onChangeUser} />
@@ -45,11 +45,11 @@ function LoginComponent(props){
                     }).catch(err=>props.history.push('/'))
                 }}>Login</button>
                 <br/><br/>
-                <button class="button" onClick={()=>{
+                <button className="button" onClick={()=>{
                 props.history.push('/Register')
             }}>create an account.</button>
             </form>
-    </body>
+    </div>
             
     )
 }

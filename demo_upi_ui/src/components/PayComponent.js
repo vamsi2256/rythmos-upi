@@ -6,15 +6,16 @@ function PayComponent(props){
     const [mobile,setMobile]=useState('')
     let handleChange = props.handleChange
     let msg=props.msg
+    let balance = props.balance
     function refershPage(){
         window.location.reload()
     }
     return(
-        <div id="pay" class="box1">
+        <div id="pay" className="box1">
              <p>Send to Contact</p>
             <input type="number" name="mobile" placeholder="enter the receiver Number" value={mobile} onChange={(e)=>setMobile(e.target.value)}/>
             <h5>{msg}</h5>
-            <button class="button" onClick={()=>{
+            <button className="button" onClick={()=>{
                     let rnumber=mobile
                     let senderNumber=JSON.parse(localStorage.getItem("mobile"))
                     let data={rnumber:rnumber,sender:senderNumber}
@@ -22,13 +23,13 @@ function PayComponent(props){
                         let obj=res.data
                         if(obj.name!=="no user"){
                         ReactDOM.render(
-                            <AmountComponent name={obj.name} rnumber={rnumber} sender={senderNumber} balance={obj.balance} handleChange={handleChange}/>,document.getElementById('pay')
+                            <AmountComponent name={obj.name} rnumber={rnumber} sender={senderNumber} balance={balance} handleChange={handleChange}/>,document.getElementById('pay')
                         )}
                         else{
                             // alert('There is no user with the given mobile number')
                             // window.location.reload()
                             ReactDOM.render(
-                                <PayComponent handleChange={handleChange} msg="No User"/>,document.getElementById('pay')
+                                <PayComponent handleChange={handleChange} msg="No User" balance={balance}/>,document.getElementById('pay')
                             )
                             setTimeout(refershPage,4000)
                             

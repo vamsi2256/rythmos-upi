@@ -1,6 +1,7 @@
 function FailureComponent(props){
     return(
-        <div><h3>Failed Due to Insuficcent Balance</h3>
+        <div >
+            <h3 className="failure">{props.msg}</h3>
         </div>
         
     )

@@ -34,9 +34,9 @@ function MenuComponent1(props){
       props.history.push('/')
    }
    return(
-      <div class="start">
+      <div className="start">
          <BalanceComponent name={name} balance={balance}/>
-         <PayComponent handleChange={handleChange} msg=""/>
+         <PayComponent handleChange={handleChange} msg="" balance={balance}/>
          <div><button className="logout-btn" onClick={logoutHandle}>Logout</button></div>
          <TransactionList/>
       </div>
