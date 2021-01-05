@@ -135,8 +135,6 @@ app.post('/pay',async(req,res)=>{
         sender.balance=parseInt(sender.balance)-parseInt(balance)
         await receiver.save()
         await sender.save()
-        let result=new TransUser({receiver:receiver,sender:sender,amount:balance,date:Date.now()})
-        await result.save()
         sendMessage(receiver,sender,balance,Date.now())
         res.send(sender.balance.toString())
     }catch(err){

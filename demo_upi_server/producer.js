@@ -14,8 +14,8 @@ module.exports=async function sendMessage(receiver,sender,amount,date){
     try{
         await producer.connect()
         let obj={
-            receiver:receiver.email,
-            sender:sender.email,
+            receiver:receiver,
+            sender:sender,
             amount:amount,
             date:date ,
         }
