@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "consumer":"(node ./consumer1.js) & node ./consumer.js"
+    "consumer":"concurrently \"cd kafkafiles && node ./consumer.js\" \"cd kafkafiles && node ./consumer1.js\""
   },
   "author": "",
   "license": "ISC",

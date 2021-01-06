@@ -19,6 +19,7 @@ const run = async () => {
       eachMessage: async ({ message }) => {
         try{
             const jsonObj = JSON.parse(message.value.toString())
+            console.log("mail executed")
             sendMailToReceiver(jsonObj.receiver.email,jsonObj.amount,jsonObj.date)
             sendMailToSender(jsonObj.sender.email,jsonObj.amount,jsonObj.date)
         }

@@ -1,7 +1,7 @@
 const { Kafka } = require('kafkajs')
 const config = require('./config')
 const mongoose = require('mongoose')
-const TransUser=require('./models/Transaction')
+const TransUser=require('../models/Transaction')
 
 const kafka = new Kafka({
   clientId: config.kafka.CLIENTID,
@@ -29,9 +29,8 @@ const run = async () => {
       eachMessage: async ({ message }) => {
         try{
             const jsonObj = JSON.parse(message.value.toString())
-            // sendMailToReceiver(jsonObj.receiver.email,jsonObj.amount,jsonObj.date)
-            // sendMailToSender(jsonObj.sender.email,jsonObj.amount,jsonObj.date)
             console.log(jsonObj)
+            console.log("transaction executed")
             let result = await TransUser({receiver:jsonObj.receiver,sender:jsonObj.sender,amount:jsonObj.amount,date:jsonObj.date})
             result.save()
         }
@@ -41,4 +40,4 @@ const run = async () => {
       }
     })
   }
-  run().catch(e => console.error(`[example/consumer] ${e.message}`, e))
+  run().catch(e => console.error(`[example/consumer1] ${e.message}`, e))

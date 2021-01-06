@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Service from '../service/UpiServices'
 import ReactDOM from 'react-dom'
 import SucessComponent from './SucessComponent'
-import FailureComponent from './FailureComponent'
+import DisplayComponent from './DisplayComponent'
 
 function AmountComponent(props){
     const [Amount,setAmount]=useState(0)
@@ -29,24 +29,24 @@ function AmountComponent(props){
                         Service.payTransaction(dummy).then(res=>{
                             handleChange(res.data)
                             ReactDOM.render(
-                                <SucessComponent/>,document.getElementById('amount')
+                                <DisplayComponent className="success" msg="Success"/>,document.getElementById('amount')
                             )
-                            setTimeout(refershPage,1500)
+                            setTimeout(refershPage,2000)
                         })
                     }
                     else{
                         ReactDOM.render(
-                            <FailureComponent msg="Transaction Failed due to insufficient Funds"/>
+                            <DisplayComponent className="failure" msg="Transaction Failed due to insufficient Funds"/>
                             ,document.getElementById('amount')
                         )
-                        setTimeout(refershPage,1500)
+                        setTimeout(refershPage,2000)
                     } 
                 }else{
                     ReactDOM.render(
-                        <FailureComponent msg="Please Enter amount greater than 0"/>,
+                        <DisplayComponent className="failure" msg="Please Enter amount greater than 0"/>,
                         document.getElementById('amount')
                     )
-                    setTimeout(refershPage,3000)
+                    setTimeout(refershPage,2000)
                 }
             }}>Send</button>
         </div>

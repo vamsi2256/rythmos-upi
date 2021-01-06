@@ -7,6 +7,7 @@ const client = new Kafka({
 })
 
 const topic = config.kafka.TOPIC
+//const topic1=config.kafka.TOPIC1
 
 const producer = client.producer()
 
@@ -19,13 +20,13 @@ module.exports=async function sendMessage(receiver,sender,amount,date){
             amount:amount,
             date:date ,
         }
-        payloads = {
+       const payloads = {
             topic: topic,
             messages: [
               { key: 'transaction-alert', value:JSON.stringify(obj)}
             ]
           }
-          producer.send(payloads)
+          await producer.send(payloads)
     }
     catch(err){
         console.log(err)
