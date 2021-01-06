@@ -11,6 +11,7 @@ const topic = config.kafka.TOPIC
 const consumer = kafka.consumer({
   groupId: config.kafka.GROUPID
 })
+
 const run = async () => {
     await consumer.connect()
     await consumer.subscribe({ topic, fromBeginning: true })
